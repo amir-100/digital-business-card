@@ -9,11 +9,20 @@ import {
 import "./BusinessCard.css";
 
 export default function BusinessCard() {
+  console.log(import.meta.env.BASE_URL);
   return (
     <div className="card light">
-      <img src="/logo.png" alt="Logo" className="card-logo" />
+      <img
+        src={`${import.meta.env.BASE_URL}logo.png`}
+        alt="Logo"
+        className="card-logo"
+      />
       <h3 className="card-company">קליניקה לעיסוי רפואי ושיקומי</h3>
-      <img src="/profile.jpeg" alt="Profile" className="card-image" />
+      <img
+        src={`${import.meta.env.BASE_URL}profile.jpeg`}
+        alt="Profile"
+        className="card-image"
+      />
       <h1 className="card-name">דודי בן ישי</h1>
       <h2 className="card-title">מעסה רפואי</h2>
 

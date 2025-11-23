@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>digital-business-card</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/a11y-toolbar/dist/a11y-toolbar.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/a11y-toolbar/dist/a11y-toolbar.min.js"></script>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        a11yTools = new A11y_Toolbar({
+          position: "right",
+          theme: "light",
+          labels: {
+            toggle: "Accessibility Options",
+          },
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/a11y-widget/dist/a11y-widget.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/a11y-widget/dist/a11y-widget.min.css"
+    />
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        new A11yWidget({
+          position: "right",
+          showLineHeight: true,
+          showLetterSpacing: true,
+          showDyslexia: true,
+          showInvert: true,
+          showContrast: true,
+          showSaturation: false,
+          showHighlight: true,
+          showCursor: true,
+          showAnimations: true,
+          showReset: true,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -99,7 +99,11 @@ export default function BusinessCard() {
         </div>
       </div>
 
-      <a href="/dudib.vcf" className="save-btn" download="dudib.vcf">
+      <a
+        href={`${import.meta.env.BASE_URL}dudib.vcf`}
+        className="save-btn"
+        download
+      >
         שמירה באנשי הקשר
       </a>
     </div>

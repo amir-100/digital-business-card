@@ -9,7 +9,6 @@ import {
 import "./BusinessCard.css";
 
 export default function BusinessCard() {
-  console.log(import.meta.env.BASE_URL);
   return (
     <div className="card light">
       <img
@@ -31,9 +30,7 @@ export default function BusinessCard() {
         <div className="icon-container">
           <a
             href="https://dudimassage.co.il"
-            target="_self"
-            rel="noopener noreferrer"
-            className="icon-btn"
+            className="icon-btn btn-website"
             title="Website"
           >
             <FaRegWindowMaximize />
@@ -44,9 +41,7 @@ export default function BusinessCard() {
         <div className="icon-container">
           <a
             href="https://wa.me/972545605508"
-            target="_self"
-            rel="noopener noreferrer"
-            className="icon-btn"
+            className="icon-btn btn-whatsapp"
             title="WhatsApp"
           >
             <FaWhatsapp />
@@ -55,7 +50,11 @@ export default function BusinessCard() {
         </div>
 
         <div className="icon-container">
-          <a href="tel:+972545605508" className="icon-btn" title="Phone">
+          <a
+            href="tel:+972545605508"
+            className="icon-btn btn-phone"
+            title="Phone"
+          >
             <FaPhoneAlt />
           </a>
           <span className="icon-label">טלפון</span>
@@ -64,7 +63,7 @@ export default function BusinessCard() {
         <div className="icon-container">
           <a
             href="mailto:dbenyshai@gmail.com"
-            className="icon-btn"
+            className="icon-btn btn-email"
             title="Email"
           >
             <FaEnvelope />
@@ -75,9 +74,7 @@ export default function BusinessCard() {
         <div className="icon-container">
           <a
             href="https://facebook.com/dwdy.bn.ysy"
-            target="_self"
-            rel="noopener noreferrer"
-            className="icon-btn"
+            className="icon-btn btn-facebook"
             title="Facebook"
           >
             <FaFacebookF />
@@ -88,9 +85,7 @@ export default function BusinessCard() {
         <div className="icon-container">
           <a
             href="https://instagram.com/dudi_ben_yshai"
-            target="_self"
-            rel="noopener noreferrer"
-            className="icon-btn"
+            className="icon-btn btn-instagram"
             title="Instagram"
           >
             <FaInstagram />

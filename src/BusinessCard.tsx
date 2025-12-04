@@ -1,4 +1,16 @@
 import {
+  Card,
+  CardMedia,
+  Typography,
+  IconButton,
+  Button,
+  Box,
+  type SxProps,
+  type Theme,
+  Grid,
+} from "@mui/material";
+
+import {
   FaPhoneAlt,
   FaEnvelope,
   FaWhatsapp,
@@ -6,101 +18,186 @@ import {
   FaFacebookF,
   FaRegWindowMaximize,
 } from "react-icons/fa";
-import "./BusinessCard.css";
+import type { JSX } from "@emotion/react/jsx-runtime";
+
+// Type for icon button items
+type IconButtonItem = {
+  icon: JSX.Element;
+  label: string;
+  href: string;
+  color?: string;
+  sx?: SxProps<Theme>;
+};
 
 export default function BusinessCard() {
+  const firstRow: IconButtonItem[] = [
+    {
+      icon: <FaRegWindowMaximize />,
+      label: "כניסה לאתר",
+      href: "https://dudimassage.co.il",
+      color: "primary",
+    },
+    {
+      icon: <FaWhatsapp />,
+      label: "וואטסאפ",
+      href: "https://wa.me/972545605508",
+      color: "success",
+    },
+    {
+      icon: <FaPhoneAlt />,
+      label: "טלפון",
+      href: "tel:+972545605508",
+      color: "info",
+    },
+  ];
+
+  const secondRow: IconButtonItem[] = [
+    {
+      icon: <FaEnvelope />,
+      label: "אימייל",
+      href: "mailto:dbenyshai@gmail.com",
+      color: "error",
+    },
+    {
+      icon: <FaFacebookF />,
+      label: "פייסבוק",
+      href: "https://facebook.com/dwdy.bn.ysy",
+      sx: { color: "#3b5998" },
+    },
+    {
+      icon: <FaInstagram />,
+      label: "אינסטגרם",
+      href: "https://instagram.com/dudi_ben_yshai",
+      sx: { color: "#E1306C" },
+    },
+  ];
+
+  const renderRow = (row: IconButtonItem[]) => (
+    <Grid container spacing={2} justifyContent="space-around" sx={{ mb: 1 }}>
+      {row.map(({ icon, label, href, color, sx }, idx) => (
+        <Grid key={idx}>
+          {/* Fixed-size container to prevent alignment break */}
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            sx={{ width: 80, minHeight: 100 }}
+          >
+            <IconButton
+              component="a"
+              href={href}
+              size="large"
+              color={color as any}
+              sx={{ ...sx, width: 56, height: 56 }}
+            >
+              {icon}
+            </IconButton>
+            <Typography
+              variant="caption"
+              textAlign="center"
+              sx={{
+                mt: 0.5,
+                fontSize: "1.2rem",
+                lineHeight: 1,
+                wordBreak: "normal",
+              }}
+            >
+              {label}
+            </Typography>
+          </Box>
+        </Grid>
+      ))}
+    </Grid>
+  );
+
   return (
-    <div className="card light">
-      <img
-        src={`${import.meta.env.BASE_URL}logo.png`}
+    <Card
+      sx={{
+        // maxWidth: 360,
+        // width: "fit-content",
+        mx: "auto",
+        mt: 4,
+        p: 2,
+        borderRadius: 3,
+        border: "#b5c2bc 3px solid",
+        boxShadow: 3,
+        textAlign: "center",
+        bgcolor: "background.paper",
+      }}
+    >
+      {/* Logo */}
+      <CardMedia
+        component="img"
+        image={`${import.meta.env.BASE_URL}logo.png`}
         alt="Logo"
-        className="card-logo"
+        sx={{
+          width: 50,
+          height: 50,
+          mx: "auto",
+          mb: 1,
+          objectFit: "fill",
+        }}
       />
-      <h3 className="card-company">קליניקה לעיסוי רפואי ושיקומי</h3>
-      <img
-        src={`${import.meta.env.BASE_URL}profile.jpeg`}
+
+      {/* Company */}
+      <Typography
+        variant="subtitle1"
+        // color="text.secondary"
+        fontWeight="bold"
+        gutterBottom
+      >
+        קליניקה לעיסוי רפואי ושיקומי
+      </Typography>
+
+      {/* Profile Image */}
+      <CardMedia
+        component="img"
+        image={`${import.meta.env.BASE_URL}profile.jpeg`}
         alt="Profile"
-        className="card-image"
+        sx={{
+          width: 200,
+          height: 200,
+          borderRadius: "50%",
+          mx: "auto",
+          mb: 2,
+        }}
       />
-      <h1 className="card-name">דודי בן ישי</h1>
-      <h2 className="card-title">מעסה רפואי</h2>
 
-      <p className="card-company">מגע ותנועה שמקדמים ריפוי</p>
-      <div className="button-grid">
-        <div className="icon-container">
-          <a
-            href="https://dudimassage.co.il"
-            className="icon-btn btn-website"
-            title="Website"
-          >
-            <FaRegWindowMaximize />
-          </a>
-          <span className="icon-label">כניסה לאתר</span>
-        </div>
+      {/* Name & Title */}
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
+        דודי בן ישי
+      </Typography>
+      <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+        מעסה רפואי
+      </Typography>
 
-        <div className="icon-container">
-          <a
-            href="https://wa.me/972545605508"
-            className="icon-btn btn-whatsapp"
-            title="WhatsApp"
-          >
-            <FaWhatsapp />
-          </a>
-          <span className="icon-label">וואטסאפ</span>
-        </div>
+      {/* Tagline */}
+      <Typography variant="body2" gutterBottom>
+        מגע ותנועה שמקדמים ריפוי
+      </Typography>
 
-        <div className="icon-container">
-          <a
-            href="tel:+972545605508"
-            className="icon-btn btn-phone"
-            title="Phone"
-          >
-            <FaPhoneAlt />
-          </a>
-          <span className="icon-label">טלפון</span>
-        </div>
+      {/* Icon rows */}
+      <Box mt={2} mb={2}>
+        {renderRow(firstRow)}
+        {renderRow(secondRow)}
+      </Box>
 
-        <div className="icon-container">
-          <a
-            href="mailto:dbenyshai@gmail.com"
-            className="icon-btn btn-email"
-            title="Email"
-          >
-            <FaEnvelope />
-          </a>
-          <span className="icon-label">אימייל</span>
-        </div>
-
-        <div className="icon-container">
-          <a
-            href="https://facebook.com/dwdy.bn.ysy"
-            className="icon-btn btn-facebook"
-            title="Facebook"
-          >
-            <FaFacebookF />
-          </a>
-          <span className="icon-label">פייסבוק</span>
-        </div>
-
-        <div className="icon-container">
-          <a
-            href="https://instagram.com/dudi_ben_yshai"
-            className="icon-btn btn-instagram"
-            title="Instagram"
-          >
-            <FaInstagram />
-          </a>
-          <span className="icon-label">אינסטגרם</span>
-        </div>
-      </div>
-
-      <a
+      {/* Save vCard Button */}
+      <Button
+        variant="contained"
+        color="primary"
+        component="a"
         href={`${import.meta.env.BASE_URL}dudib.vcf`}
-        className="save-btn"
         download
+        fullWidth
+        sx={{
+          ":hover": {
+            color: "white", // keep text color same
+          },
+        }}
       >
         שמירה באנשי הקשר
-      </a>
-    </div>
+      </Button>
+    </Card>
   );
 }
